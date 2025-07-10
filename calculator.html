@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://images.icon-icons.com/413/PNG/256/Calculator_41154.png" type="image/x-icon">
+    <title>Calculator Ni Jason</title>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    font-family: monospace;
+}
+
+.calculator {
+    background-color: rgb(59, 58, 58);
+    padding: 20px;
+    border-radius: 13px;
+    width: 50vh;
+    padding-bottom: 30px;
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+}
+
+.calculator h1 {
+    color: white;
+    text-align: center;
+    border: 2px solid rgba(222, 218, 218, 0.193);
+    border-bottom: none;
+    border-radius: 5px;
+    margin: 0;
+    margin-bottom: 25px;
+    padding-top: 5px;
+}
+
+#display {
+    margin-bottom: 20px;
+    text-align: right;
+    background-color: rgb(194, 255, 177);
+    color: rgb(59, 58, 58);
+    border-radius: 5px;
+    font-size: 30px;
+    padding: 10px;
+    width: 100%;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    background-color: rgb(99, 100, 100);
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+.content {
+    border-top: 2px solid rgba(222, 218, 218, 0.193);
+    padding-top: 13px;
+}
+
+button:focus{
+    opacity: 0.7;
+}
+
+#clear {
+    background-color: rgb(254, 71, 71);
+}
+
+#equal {
+    background-color: #64e4fe;
+    grid-column: span 2;
+}
+
+#operator {
+    background-color: rgb(246, 178, 51);
+}
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="text" id="display" readonly>
+        <div class="content">
+        <div class="buttons">
+            <button id="clear" onclick="clearValue('C')">C</button>
+            <button onclick="displayValue('(')">(</button>
+            <button onclick="displayValue(')')">)</button>
+            <button id="operator" onclick="displayValue('/')">÷</button>
+
+            <button onclick="displayValue('7')">7</button>
+            <button onclick="displayValue('8')">8</button>
+            <button onclick="displayValue('9')">9</button>
+            <button id="operator" onclick="displayValue('*')">×</button>
+
+            <button onclick="displayValue('4')">4</button>
+            <button onclick="displayValue('5')">5</button>
+            <button onclick="displayValue('6')">6</button>
+            <button id="operator" onclick="displayValue('-')">-</button>
+
+            <button onclick="displayValue('1')">1</button>
+            <button onclick="displayValue('2')">2</button>
+            <button onclick="displayValue('3')">3</button>
+            <button id="operator" onclick="displayValue('+')">+</button>
+
+            <button onclick="displayValue('0')">0</button>
+            <button onclick="displayValue('.')">.</button>
+            <button id="equal" onclick="equalValue('=')">=</button>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const display = document.getElementById("display")
+
+        function displayValue(val) {
+            display.value += val;
+        }
+
+            function clearValue() {
+                display.value = "";
+            }
+
+            function equalValue() {
+                try {
+                    display.value = eval(display.value)
+                } catch (error) {
+                    display.value = "Error";
+                }
+            }
+
+    </script>
+    
+</body>
+</html>
